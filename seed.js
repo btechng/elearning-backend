@@ -19,7 +19,17 @@ try {
   await Question.deleteMany();
   console.log("🧹 Cleared all collections");
 
-  // Create test user
+  // 👉 Create admin user
+  const adminHashedPassword = await bcrypt.hash("arianna", 10);
+  const adminUser = await User.create({
+    name: "Admin User",
+    email: "arianna@gmail.com",
+    password: adminHashedPassword,
+    role: "admin", // 👈 sets admin privileges
+  });
+  console.log("🔐 Created admin user:", adminUser._id);
+
+  // 👉 Create test user
   const hashedPassword = await bcrypt.hash("password123", 10);
   const user = await User.create({
     name: "Test User",
