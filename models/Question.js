@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import "./Quiz";
 
 const questionSchema = new mongoose.Schema({
   quizId: { type: mongoose.Schema.Types.ObjectId, ref: "Quiz" },
