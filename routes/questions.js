@@ -7,7 +7,7 @@ const router = express.Router();
 // ✅ GET all questions
 router.get("/", async (req, res) => {
   try {
-    const questions = await Question.find().populate("quizId");
+    const questions = await Question.find();
     if (questions.length === 0) {
       return res.status(404).json({ message: "No questions found" });
     }
